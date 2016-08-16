@@ -10,6 +10,17 @@ describe('Queryable Interface', function() {
     ////////////////////////////////////////////////////
 
     before(function(done) {
+      Queryable.User.destroy(function(err) {
+        if(err) return done(err);
+        done();
+      });
+    });
+
+    /////////////////////////////////////////////////////
+    // TEST SETUP
+    ////////////////////////////////////////////////////
+
+    before(function(done) {
 
       var usersArray = [
         { first_name: 'tHeTest', type: 'case sensitivity', age : 10 },
@@ -67,15 +78,6 @@ describe('Queryable Interface', function() {
         });
       });
 
-      it('should work with findBy*()', function(done) {
-        Queryable.User.findByFirst_name('thetest').sort({age : 1}).exec( function(err, users) {
-          assert.strictEqual(users.length, 3);
-          assert(users[0].id);
-          assert.equal(users[0].first_name, 'tHeTest');
-          done();
-        });
-      });
-
     });
 
     describe('special classified queries', function() {
@@ -105,7 +107,7 @@ describe('Queryable Interface', function() {
       ////////////////////////////////////////////////////
 
       it('contains should work in a case insensitive fashion by default', function(done) {
-        Queryable.User.find({where : { first_name: { contains: 'hete'}, type: 'case sensitivity' },sort:{age : 1}}, function(err, users) {
+        Queryable.User.find({where : { first_name: { contains: 'hete'}, type: 'case sensitivity' },sort:{age : 1}, ignoreCase : true}, function(err, users) {
           assert.strictEqual(users.length, 3);
           assert(users[0].id);
           assert.equal(users[0].first_name, 'tHeTest');
@@ -114,7 +116,7 @@ describe('Queryable Interface', function() {
       });
 
       it('startsWith should work in a case insensitive fashion by default', function(done) {
-        Queryable.User.find({where : { first_name: { startsWith: 'the'}, type: 'case sensitivity' },sort:{age : 1}}, function(err, users) {
+        Queryable.User.find({where : { first_name: { startsWith: 'the'}, type: 'case sensitivity' },sort:{age : 1}, ignoreCase : true}, function(err, users) {
           assert.strictEqual(users.length, 4);
           assert(users[0].id);
           assert.equal(users[0].first_name, 'tHeTest');
@@ -123,7 +125,7 @@ describe('Queryable Interface', function() {
       });
 
       it('endsWith should work in a case insensitive fashion by default', function(done) {
-        Queryable.User.find({where : { first_name: { endsWith: 'est'}, type: 'case sensitivity' },sort:{age : 1}}, function(err, users) {
+        Queryable.User.find({where : { first_name: { endsWith: 'est'}, type: 'case sensitivity' },sort:{age : 1}, ignoreCase : true}, function(err, users) {
           assert.strictEqual(users.length, 5);
           assert(users[0].id);
           assert.equal(users[0].first_name, 'tHeTest');
@@ -132,7 +134,7 @@ describe('Queryable Interface', function() {
       });
 
       it('like should work in a case insensitive fashion by default', function(done) {
-        Queryable.User.find({where : { first_name: { like: '%hete%'}, type: 'case sensitivity' },sort:{age : 1}}, function(err, users) {
+        Queryable.User.find({where : { first_name: { like: '%hete%'}, type: 'case sensitivity' },sort:{age : 1}, ignoreCase : true}, function(err, users) {
           assert.strictEqual(users.length, 3);
           assert(users[0].id);
           assert.equal(users[0].first_name, 'tHeTest');
@@ -141,7 +143,7 @@ describe('Queryable Interface', function() {
       });
 
       it('endsWith should actually enforce endswith', function(done) {
-        Queryable.User.find({where : { first_name: { endsWith: 'AR)H$daxx'}, type: 'case sensitivity' },sort:{age : 1}}, function(err, users) {
+        Queryable.User.find({where : { first_name: { endsWith: 'AR)H$daxx'}, type: 'case sensitivity' },sort:{age : 1}, ignoreCase : true}, function(err, users) {
           assert.strictEqual(users.length, 1);
           assert(users[0].id);
           assert.equal(users[0].first_name, 'AR)H$daxx');
