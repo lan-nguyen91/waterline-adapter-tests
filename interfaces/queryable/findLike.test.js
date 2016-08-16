@@ -19,7 +19,7 @@ describe('Queryable Interface', function() {
       Queryable.User.createEach([{ first_name: testName }, { first_name: testName2 }], function(err) {
         if (err) return done(err);
 
-        Queryable.User.findLike({ first_name: part }, function(err, users) {
+        Queryable.User.find({ first_name: { like  : part } }, function(err, users) {
           assert.ifError(err);
           assert(Array.isArray(users));
           assert.strictEqual(users.length, 2, util.format('expected 2 users, but got %s, see?\n%s', users.length, util.inspect(users, false, null) ));

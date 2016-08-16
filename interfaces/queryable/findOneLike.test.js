@@ -16,7 +16,7 @@ describe('Queryable Interface', function() {
       Queryable.User.create({ first_name: testName }, function(err) {
         if (err) return done(err);
 
-        Queryable.User.findOneLike({ first_name: part }, function(err, user) {
+        Queryable.User.findOne({ first_name: { like : part }}, function(err, user) {
           assert.ifError(err);
           assert.equal(user.first_name, testName);
           done();
