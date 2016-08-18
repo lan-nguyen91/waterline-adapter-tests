@@ -31,7 +31,6 @@ describe('Queryable Interface', function() {
         /////////////////////////////////////////////////////
         // TEST METHODS
         ////////////////////////////////////////////////////
-
         it('should return records with lessThan key', function(done) {
           Queryable.User.find({ first_name: testName, age: { lessThan: 42 }})
           .sort('age asc')
@@ -57,7 +56,7 @@ describe('Queryable Interface', function() {
         });
       });
 
-      describe('dates', function() {
+      /*describe('dates', function() {
 
         /////////////////////////////////////////////////////
         // TEST SETUP
@@ -111,7 +110,7 @@ describe('Queryable Interface', function() {
           });
         });
 
-      });
+      }); */
     });
 
     describe('lessThanOrEqual (<=)', function() {
@@ -162,7 +161,7 @@ describe('Queryable Interface', function() {
         });
       });
 
-      describe('dates', function() {
+      /* describe('dates', function() {
 
         /////////////////////////////////////////////////////
         // TEST SETUP
@@ -216,7 +215,7 @@ describe('Queryable Interface', function() {
           });
         });
 
-      });
+      }); */
     });
 
   });

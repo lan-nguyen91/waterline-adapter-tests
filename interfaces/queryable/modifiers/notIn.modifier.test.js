@@ -3,7 +3,7 @@ var assert = require('assert'),
 
 describe('Queryable Interface', function() {
 
-  describe('NOT IN Query Modifier', function() {
+/*  describe('NOT IN Query Modifier', function() {
 
     var testName = 'NOT_IN_query_test';
 
@@ -65,5 +65,5 @@ describe('Queryable Interface', function() {
       });
     });
 
-  });
+  }); */
 });

@@ -61,7 +61,7 @@ describe('Queryable Interface', function() {
         });
       });
 
-      it('should work with multi-level criteria options inside the OR criteria', function(done) {
+      /*it('should work with multi-level criteria options inside the OR criteria', function(done) {
         Queryable.User.find({
           or: [
             { first_name: { contains: 'user0' }, type: 'or test' },
@@ -136,7 +136,7 @@ describe('Queryable Interface', function() {
           done();
         });
       });
+    }); */
     });
-
   });
 });
