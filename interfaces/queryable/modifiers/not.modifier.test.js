@@ -30,7 +30,7 @@ describe('Queryable Interface', function() {
       // TEST METHODS
       ////////////////////////////////////////////////////
 
-      /*it('should return records with string usage', function(done) {
+      it('should return records with string usage', function(done) {
         Queryable.User.find({ first_name: testName, age: { not: 40 }})
         .sort('age asc')
         .exec(function(err, users) {
@@ -46,7 +46,7 @@ describe('Queryable Interface', function() {
 
           done();
         });
-      }); */
+      });
 
       it('should return records with symbolic usage ! usage', function(done) {
         Queryable.User.find({ first_name: testName, age: { '!': 40 }})
@@ -60,7 +60,7 @@ describe('Queryable Interface', function() {
         });
       });
 
-      it('should return records using not comparisons on strings', function(done) {
+      /*it('should return records using not comparisons on strings', function(done) {
 
         Queryable.User.find({ first_name: testName, email: { '!': '41@test.com' }})
         .sort('age asc')
@@ -73,7 +73,7 @@ describe('Queryable Interface', function() {
           assert.strictEqual(users[1].age, 42);
           done();
         });
-      });
+      });*/
     });
 
   });
