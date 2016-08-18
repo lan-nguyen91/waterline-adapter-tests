@@ -29,7 +29,7 @@ describe('Queryable Interface', function() {
     ////////////////////////////////////////////////////
 
     it('should return the correct amount of records', function(done) {
-      Queryable.User.find({ where: { type: 'skip test' }, skip: 3 }, { limit : 10 }, function(err, users) {
+      Queryable.User.find({ where: { type: 'skip test' }, skip: 3 , limit : 10}, function(err, users) {
         assert.ifError(err);
         assert(Array.isArray(users));
         assert.strictEqual(users.length, 7);
@@ -38,7 +38,7 @@ describe('Queryable Interface', function() {
     });
 
     it('dynamic finder usage should return the correct amount of records', function(done) {
-      Queryable.User.findByType('skip test', { skip: 3 }, { limit : 10 }, function(err, users) {
+      Queryable.User.findByType('skip test', { skip: 3 , limit : 10}, function(err, users) {
         assert.ifError(err);
         assert(Array.isArray(users));
         assert.strictEqual(users.length, 7);
@@ -47,7 +47,7 @@ describe('Queryable Interface', function() {
     });
 
     it('as an option should return correct amount of records', function(done) {
-      Queryable.User.find({ where: { type: 'skip test' } }, { limit : 10 }, { skip: 3 }, function(err, users) {
+      Queryable.User.find({ where: { type: 'skip test' } }, { skip: 3 , limit : 10 }, function(err, users) {
         assert.ifError(err);
         assert(Array.isArray(users));
         assert.strictEqual(users.length, 7);
