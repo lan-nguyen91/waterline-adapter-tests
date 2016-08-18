@@ -18,7 +18,7 @@ describe('Queryable Interface', function() {
         Queryable.User.create({ first_name: testName }, function(err) {
           if(err) return done(err);
 
-          Queryable.User.find({ like: { first_name: part } }, function(err, users) {
+          Queryable.User.find({ first_name: { like : part } }, function(err, users) {
             assert.ifError(err);
             assert(Array.isArray(users));
             assert.equal(users.length, 1);
@@ -35,7 +35,7 @@ describe('Queryable Interface', function() {
         Queryable.User.create({ first_name: testName }, function(err) {
           if(err) return done(err);
 
-          Queryable.User.find({ like: { first_name: '%'+part+'%' } }, function(err, users) {
+          Queryable.User.find({ first_name: { like : '%'+part+'%' } }, function(err, users) {
             assert.ifError(err);
             assert(Array.isArray(users));
             assert.equal(users.length, 1);
